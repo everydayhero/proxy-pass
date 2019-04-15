@@ -6,5 +6,5 @@ services:
     image: everydayhero/proxy-pass:latest
     ports:
       - "8080:80"
-    env:
+    environment:
       TARGET: example.com

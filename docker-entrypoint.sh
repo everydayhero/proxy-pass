@@ -9,4 +9,4 @@ for tmpl in /etc/nginx/conf.d/*.tmpl; do
   envsubst '$TARGET' < "$tmpl" > "$(dirname $tmpl)/$(basename $tmpl .tmpl).conf"
 done
 
-nginx -g 'daemon off';
+nginx -g 'daemon off;'

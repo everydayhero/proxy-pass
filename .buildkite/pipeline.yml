@@ -1,0 +1,17 @@
+---
+steps:
+  - name: ":construction:"
+    branches: master
+    plugins:
+      - docker-compose#v2.6.0:
+          build: nginx
+          image-repository: index.docker.io/everydayhero/proxy-pass
+
+  - wait
+
+  - name: ":shipit:"
+    branches: master
+    plugins:
+      - docker-compose#v2.6.0:
+          push: nginx
+          image-repository: index.docker.io/everydayhero/proxy-pass:latest

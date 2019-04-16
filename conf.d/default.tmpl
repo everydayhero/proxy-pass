@@ -52,5 +52,10 @@ server {
         # Mitigate httpoxy attack
         proxy_set_header Proxy "";
     }
+
+    location = /_/health {
+        access_log off;
+        return 200;
+    }
 }
 

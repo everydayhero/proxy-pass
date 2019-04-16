@@ -39,7 +39,7 @@ server {
     set $target_upstream "${TARGET}";
 
     location / {
-        proxy_pass http://$target_upstream;
+        proxy_pass $target_upstream;
         proxy_http_version 1.1;
         proxy_buffering off;
         proxy_set_header Host $http_host;

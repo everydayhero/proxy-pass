@@ -32,11 +32,14 @@ map $http_x_forwarded_port $proxy_x_forwarded_port {
 server {
     listen       80;
     server_name  "";
-
     access_log  /dev/stdout  main;
 
+    # Use variable for target to force DNS re-resolution
+    # Source: https://www.jethrocarr.com/2013/11/02/nginx-reverse-proxies-and-dns-resolution/
+    set $target_upstream "${TARGET}";
+
     location / {
-        proxy_pass ${TARGET};
+        proxy_pass http://$target_upstream;
         proxy_http_version 1.1;
         proxy_buffering off;
         proxy_set_header Host $http_host;

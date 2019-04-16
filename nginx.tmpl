@@ -20,6 +20,8 @@ http {
 
     access_log  /dev/stdout  main;
 
+    resolver ${RESOLVER};
+
     sendfile        on;
     #tcp_nopush     on;
 

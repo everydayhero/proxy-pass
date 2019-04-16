@@ -7,4 +7,5 @@ services:
     ports:
       - "8080:80"
     environment:
+      RESOLVER: 127.0.0.1
       TARGET: example.com

@@ -8,11 +8,17 @@ map $http_upgrade $proxy_connection {
     '' close;
 }
 
+# Force https scheme when connected to port 443
+map $server_port $http_scheme_to_use {
+  default $scheme;
+  443 https;
+}
+
 # If we receive X-Forwarded-Proto, pass it through; otherwise, pass along the
 # scheme used to connect to this server
 map $http_x_forwarded_proto $proxy_x_forwarded_proto {
     default $http_x_forwarded_proto;
-    '' $scheme;
+    '' $http_scheme_to_use;
 }
 
 # Set appropriate X-Forwarded-Ssl header
@@ -20,7 +26,6 @@ map $scheme $proxy_x_forwarded_ssl {
     default off;
     https on;
 }
-
 
 # If we receive X-Forwarded-Port, pass it through; otherwise, pass along the
 # server port the client connected to

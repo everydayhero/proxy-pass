@@ -9,5 +9,7 @@ COPY nginx.tmpl /etc/nginx/
 COPY conf.d /etc/nginx/conf.d
 COPY docker-entrypoint.sh /
 
+EXPOSE 80 443
+
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD []

@@ -36,6 +36,7 @@ map $http_x_forwarded_port $proxy_x_forwarded_port {
 
 server {
     listen       80;
+    listen       443;
     server_name  "";
     access_log  /dev/stdout  main;
 

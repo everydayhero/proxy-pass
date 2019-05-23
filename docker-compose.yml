@@ -6,6 +6,7 @@ services:
     image: everydayhero/proxy-pass:latest
     ports:
       - "8080:80"
+      - "4433:443"
     environment:
       RESOLVER: 127.0.0.1
       TARGET: example.com

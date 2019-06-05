@@ -21,6 +21,7 @@ http {
     access_log  /dev/stdout  main;
 
     resolver ${RESOLVER};
+    client_max_body_size ${MAX_BODY_SIZE};
 
     sendfile        on;
     #tcp_nopush     on;

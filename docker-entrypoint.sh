@@ -6,7 +6,7 @@ if [ -n "$1" ]; then
 fi
 
 for tmpl in /etc/nginx/nginx.tmpl /etc/nginx/conf.d/*.tmpl; do
-  envsubst '$RESOLVER,$TARGET' < "$tmpl" > "$(dirname $tmpl)/$(basename $tmpl .tmpl).conf"
+  envsubst '$RESOLVER,$TARGET,$MAX_BODY_SIZE' < "$tmpl" > "$(dirname $tmpl)/$(basename $tmpl .tmpl).conf"
 done
 
 nginx -g 'daemon off;'
